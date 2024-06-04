@@ -36,7 +36,7 @@ Things you may want to cover:
 | first_name       | string             | null: false |
 | family_name_kana | string             | null: false |
 | first_name_kana  | string             | null: false |
-| dob              | string             | null: false |
+| dob              | date               | null: false |
 
 ### association
 
@@ -56,7 +56,7 @@ Things you may want to cover:
 | delivery_time_id | integer    | null: false |
 | price_id         | integer    | null: false |
 | user             | references | null: false , foreign_key: true |
-| order           | references | foreign_key: true |
+| order            | references | foreign_key: true |
 
 ### association
 
