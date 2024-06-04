@@ -92,6 +92,7 @@ Things you may want to cover:
 | street_address | string     | null: false |
 | building       | string     |             |
 | tell           | string     | null: false |
+| order          | references | null: false , forign_key: true|
 
 ### association
 
