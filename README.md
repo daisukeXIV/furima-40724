@@ -56,7 +56,6 @@ Things you may want to cover:
 | delivery_time_id | integer    | null: false |
 | price            | integer    | null: false |
 | user             | references | null: false , foreign_key: true |
-| order            | references | foreign_key: true |
 
 ### association
 
