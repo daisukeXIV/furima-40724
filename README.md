@@ -52,7 +52,7 @@ Things you may want to cover:
 | category_id      | integer    | null: false |
 | conditioin_id    | integer    | null: false |
 | postage_id       | integer    | null: false |
-| prefectures_id   | integer    | null: false |
+| prefecture_id   | integer    | null: false |
 | delivery_time_id | integer    | null: false |
 | price            | integer    | null: false |
 | user             | references | null: false , foreign_key: true |
@@ -87,8 +87,8 @@ Things you may want to cover:
 | Column         | Type       | Option      |
 |----------------|------------|-------------|
 | post_code      | string     | null: false |
-| prefectures_id | integer    | null: false |
-| municipalities | string     | null: false |
+| prefecture_id  | integer    | null: false |
+| municipality   | string     | null: false |
 | street_address | string     | null: false |
 | building       | string     |             |
 | tell           | string     | null: false |
