@@ -4,7 +4,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
   VALIDATE_PASSWORD_REGEX = /\A(?=.*?[a-z])(?=.*?\d)[a-z\d]{2,}\z/i
-  VALIDATE_KATAKANA_REGEX = /\p{katakana}/
+  VALIDATE_KATAKANA_REGEX = /\A\p{katakana}\z/
   validates :password, format: {
     with: VALIDATE_PASSWORD_REGEX,
     message: 'は半角英数字混合で設定してください。'
