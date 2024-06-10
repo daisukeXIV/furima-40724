@@ -87,6 +87,16 @@ RSpec.describe User, type: :model do
       @user.valid?
       expect(@user.errors.full_messages).to include("First name kana はカタカナで設定してください。")
     end
+     it '名字カナがカナ以外だと登録できない(漢字)'do
+      @user.family_name_kana="漢字"
+      @user.valid?
+      expect(@user.errors.full_messages).to include("Family name kana はカタカナで設定してください。")
+    end
+    it '名前カナがカナ以外だと登録できない(漢字)'do
+      @user.first_name_kana="漢字"
+      @user.valid?
+      expect(@user.errors.full_messages).to include("First name kana はカタカナで設定してください。")
+    end
     it '生年月日が空だと登録できいない' do
       @user.dob=''
       @user.valid?
