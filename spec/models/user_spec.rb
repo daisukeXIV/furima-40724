@@ -26,7 +26,7 @@ RSpec.describe User, type: :model do
     it '重複したemailが存在する場合は登録できない' do
       @user.save
       other_user = FactoryBot.build(:user)
-      other_user.email=@user.email
+      other_user.email = @user.email
       other_user.valid?
       expect(other_user.errors.full_messages).to include("Email has already been taken")
     end
@@ -49,6 +49,12 @@ RSpec.describe User, type: :model do
     end
     it 'passwordが数字のみだと登録できない' do
       @user.password = '123456'
+      @user.password_confirmation = @user.password
+      @user.valid?
+      expect(@user.errors.full_messages).to include('Password は半角英数字混合で設定してください。')
+    end
+    it 'passwordに全角文字が入っていると登録できない' do
+      @user.password ="ｐassword"
       @user.password_confirmation = @user.password
       @user.valid?
       expect(@user.errors.full_messages).to include('Password は半角英数字混合で設定してください。')
