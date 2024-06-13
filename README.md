@@ -52,7 +52,7 @@ Things you may want to cover:
 | category_id      | integer    | null: false |
 | conditioin_id    | integer    | null: false |
 | postage_id       | integer    | null: false |
-| prefecture_id   | integer    | null: false |
+| prefecture_id    | integer    | null: false |
 | delivery_time_id | integer    | null: false |
 | price            | integer    | null: false |
 | user             | references | null: false , foreign_key: true |
