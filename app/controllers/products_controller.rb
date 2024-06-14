@@ -1,4 +1,5 @@
 class ProductsController < ApplicationController
+  before_action :authenticate_user!, only: [:create]
   def create
     @product = Product.create(product_params)
     if @product.save
