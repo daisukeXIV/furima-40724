@@ -15,7 +15,7 @@ function tax_calc(){
   let tax_field = document.getElementById('add-tax-price');
   let profit_field = document.getElementById('profit');
   const tax_rate = 0.1
-  price_field.addEventListener('change',function(){
+  price_field.addEventListener('input',function(){
     let price = price_field.value
     // tax計算処理
     let tax = Math.floor(price * tax_rate)
