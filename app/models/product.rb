@@ -4,6 +4,7 @@ class Product < ApplicationRecord
   belongs_to :condition
   belongs_to :prefecture
   belongs_to :postage
+  belongs_to :user
   has_one_attached :image
   # 空の項目を除外する記述
   with_options presence: true do
