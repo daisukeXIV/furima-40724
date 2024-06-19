@@ -1,10 +1,11 @@
 class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
+  has_many :products
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
   VALIDATE_PASSWORD_REGEX = /\A(?=.*?[a-z])(?=.*?\d)[a-z\d]{2,}\z/i
-  VALIDATE_KATAKANA_REGEX = /\A\p{katakana}\z/
+  VALIDATE_KATAKANA_REGEX = /\A\p{katakana}+\z/
   VALIDATE_NAME_REGEX = /\A[\p{Hiragana}\p{katakana}\p{Han}]+\z/
   validates :password, format: {
     with: VALIDATE_PASSWORD_REGEX,
