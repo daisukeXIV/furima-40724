@@ -1,5 +1,5 @@
 class ProductsController < ApplicationController
-  before_action :authenticate_user!, only: [:create]
+  before_action :authenticate_user!, only: [:create, :update]
   def create
     @product = Product.create(product_params)
     if @product.save
@@ -11,6 +11,9 @@ class ProductsController < ApplicationController
 
   def update
     @product = Product.find(params[:id])
+    unless current_user.id == @product.user_id
+      redirect_to root_path
+    end
     @product.update(product_params)
     if @product.save
       redirect_to item_path(@product)
