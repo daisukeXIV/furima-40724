@@ -1,5 +1,5 @@
 class ItemsController < ApplicationController
-  before_action :authenticate_user!, only: [:new]
+  before_action :authenticate_user!, only: [:new, :edit]
   def index
     @products = Product.all.order('id DESC')
   end
@@ -14,5 +14,8 @@ class ItemsController < ApplicationController
 
   def edit
     @product = Product.find(params[:id])
+    unless current_user.id == @product.user_id
+      redirect_to root_path
+    end
   end
 end
