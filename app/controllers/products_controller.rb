@@ -13,7 +13,7 @@ class ProductsController < ApplicationController
     @product = Product.find(params[:id])
     @product.update(product_params)
     if @product.save
-      redirect_to root_path
+      redirect_to item_path(@product)
     else
       render 'items/edit', status: :unprocessable_entity
     end
