@@ -14,8 +14,8 @@ class ItemsController < ApplicationController
 
   def edit
     @product = Product.find(params[:id])
-    unless current_user.id == @product.user_id
-      redirect_to root_path
-    end
+    return if current_user.id == @product.user_id
+
+    redirect_to root_path
   end
 end
