@@ -1,11 +1,11 @@
 window.addEventListener('turbo:load',function(){
-  if(document.URL.match("/items/new")){
+  if(document.URL.match("/items/new") || document.URL.match("/edit")){
     tax_calc();
   }
 })
 // 入力エラー時のrenderで描画された時の処理
 window.addEventListener('turbo:render',function(){
-  if(document.URL.match("/items/new")){
+  if(document.URL.match("/items/new") || document.URL.match("/edit")){
     tax_calc();
   }
 })
