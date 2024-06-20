@@ -1,11 +1,22 @@
 class ProductsController < ApplicationController
-  before_action :authenticate_user!, only: [:create]
+  before_action :authenticate_user!, only: [:create, :update]
   def create
     @product = Product.create(product_params)
     if @product.save
       redirect_to root_path
     else
       render template: 'items/new', status: :unprocessable_entity
+    end
+  end
+
+  def update
+    @product = Product.find(params[:id])
+    redirect_to root_path unless current_user.id == @product.user_id
+    @product.update(product_params)
+    if @product.save
+      redirect_to item_path(@product)
+    else
+      render 'items/edit', status: :unprocessable_entity
     end
   end
 
