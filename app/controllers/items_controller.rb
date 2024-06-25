@@ -1,6 +1,7 @@
 class ItemsController < ApplicationController
   before_action :authenticate_user!, only: [:new, :edit]
   before_action :set_product, only: [:show, :edit]
+  before_action :soldout_judge, only: [:edit]
   def index
     @products = Product.all.order('id DESC')
   end
@@ -22,5 +23,10 @@ class ItemsController < ApplicationController
 
   def set_product
     @product = Product.find(params[:id])
+  end
+
+  def soldout_judge
+    set_product
+    redirect_to root_path unless @product.order.nil?
   end
 end

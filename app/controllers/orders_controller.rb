@@ -1,5 +1,6 @@
 class OrdersController < ApplicationController
   before_action :set_product, only: [:index, :create]
+  before_action :soldout_judge, only: [:index, :create]
   def index
     set_gon_publickey
     @order_address = OrderAddress.new
@@ -30,6 +31,7 @@ class OrdersController < ApplicationController
     set_product
     redirect_to root_path unless @product.order.nil?
   end
+
   def set_gon_publickey
     gon.public_key = ENV["PAYJP_PUBLIC_KEY"]
   end
