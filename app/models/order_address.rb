@@ -13,7 +13,7 @@ class OrderAddress
     validates :street_address
     validates :tell, format: { with: VALIDATE_TELL_REGEX, message: "は10桁以上11桁以内の半角数値で入力してください", allow_blank: true }
     validates :token
-    balidates :price
+    validates :price
   end
 
   def save
