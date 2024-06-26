@@ -1,5 +1,5 @@
 class OrdersController < ApplicationController
-  before_action :authenticate_user!,only:[:index,:create]
+  before_action :authenticate_user!, only: [:index, :create]
   before_action :set_product, only: [:index, :create]
   before_action :soldout_judge, only: [:index, :create]
   before_action :current_user_exclusion, only: [:index, :create]
@@ -22,7 +22,9 @@ class OrdersController < ApplicationController
   private
 
   def order_param
-    params.require(:order_address).permit(:post_code, :prefecture_id, :municipality, :street_address, :building, :tell).merge(user_id: current_user.id, product_id: params[:item_id],token: params[:token], price: @product.price)
+    params.require(:order_address).permit(:post_code, :prefecture_id, :municipality, :street_address, :building, :tell).merge(
+      user_id: current_user.id, product_id: params[:item_id], token: params[:token], price: @product.price
+    )
   end
 
   def set_product
@@ -34,7 +36,7 @@ class OrdersController < ApplicationController
   end
 
   def set_gon_publickey
-    gon.public_key = ENV["PAYJP_PUBLIC_KEY"]
+    gon.public_key = ENV['PAYJP_PUBLIC_KEY']
   end
 
   def current_user_exclusion

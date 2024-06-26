@@ -25,7 +25,7 @@ RSpec.describe OrderAddress, type: :model do
       it '郵便番号にハイフンが含まれてないと購入できない' do
         @order_address.post_code = '0000000'
         @order_address.valid?
-        expect(@order_address.errors.full_messages).to include("Post code is invalid. Include hyphen(-)")
+        expect(@order_address.errors.full_messages).to include('Post code is invalid. Include hyphen(-)')
       end
       it '都道府県が空だと購入できない' do
         @order_address.prefecture_id = ''
@@ -50,17 +50,17 @@ RSpec.describe OrderAddress, type: :model do
       it '電話番号が10文字未満だと購入できない' do
         @order_address.tell = '123456789'
         @order_address.valid?
-        expect(@order_address.errors.full_messages).to include("Tell は10桁以上11桁以内の半角数値で入力してください")
+        expect(@order_address.errors.full_messages).to include('Tell は10桁以上11桁以内の半角数値で入力してください')
       end
       it '電話番号が11より大きいと購入できない' do
         @order_address.tell = '12345678912345'
         @order_address.valid?
-        expect(@order_address.errors.full_messages).to include("Tell は10桁以上11桁以内の半角数値で入力してください")
+        expect(@order_address.errors.full_messages).to include('Tell は10桁以上11桁以内の半角数値で入力してください')
       end
       it '電話番号に半角数字以外が含まれると購入できない' do
         @order_address.tell = '123-4567'
         @order_address.valid?
-        expect(@order_address.errors.full_messages).to include("Tell は10桁以上11桁以内の半角数値で入力してください")
+        expect(@order_address.errors.full_messages).to include('Tell は10桁以上11桁以内の半角数値で入力してください')
       end
       it 'tokenが空だと購入できない' do
         @order_address.token = ''
