@@ -1,6 +1,7 @@
 class OrdersController < ApplicationController
   before_action :set_product, only: [:index, :create]
   before_action :soldout_judge, only: [:index, :create]
+  before_action :current_user_exclusion, only: [:index, :create]
   def index
     set_gon_publickey
     @order_address = OrderAddress.new
@@ -28,11 +29,14 @@ class OrdersController < ApplicationController
   end
 
   def soldout_judge
-    set_product
     redirect_to root_path unless @product.order.nil?
   end
 
   def set_gon_publickey
     gon.public_key = ENV["PAYJP_PUBLIC_KEY"]
+  end
+
+  def current_user_exclusion
+    redirect_to root_path if current_user.id == @product.user.id
   end
 end
