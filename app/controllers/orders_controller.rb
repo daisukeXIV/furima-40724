@@ -1,4 +1,5 @@
 class OrdersController < ApplicationController
+  before_action :authenticate_user!,only:[:index,:create]
   before_action :set_product, only: [:index, :create]
   before_action :soldout_judge, only: [:index, :create]
   before_action :current_user_exclusion, only: [:index, :create]
