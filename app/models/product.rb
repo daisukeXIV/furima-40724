@@ -7,6 +7,7 @@ class Product < ApplicationRecord
   belongs_to :delivery_time
   belongs_to :user
   has_one_attached :image
+  has_one :order
   # 空の項目を除外する記述
   with_options presence: true do
     validates :name

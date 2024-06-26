@@ -2,6 +2,7 @@ class ProductsController < ApplicationController
   before_action :authenticate_user!, only: [:create, :update, :destroy]
   before_action :set_product, only: [:update, :destroy]
   before_action :correct_user, only: [:update, :destroy]
+  before_action :soldout_judge, only: [:update, :destroy]
   def create
     @product = Product.create(product_params)
     if @product.save
@@ -38,5 +39,10 @@ class ProductsController < ApplicationController
 
   def correct_user
     redirect_to root_path unless current_user.id == @product.user_id
+  end
+
+  def soldout_judge
+    set_product
+    redirect_to root_path unless @product.order.nil?
   end
 end
